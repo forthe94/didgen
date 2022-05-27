@@ -41,7 +41,8 @@ class Rythm:
 
 
 SYLLABLES: list[Syllable] = [
-    Syllable('Tou', 3, True),
+    Syllable('Tou', 2, True),
+    Syllable('Tou-', 3, True),
     Syllable('taka', 2),
     Syllable('taka', 2),
     Syllable('tiki', 2),

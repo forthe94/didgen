@@ -1,6 +1,5 @@
 import asyncio
 import os
-from collections import defaultdict
 
 from aiogram import Bot, Dispatcher, types, executor
 
@@ -12,13 +11,6 @@ PORT = int(os.environ.get('PORT', 80))
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
-
-googlesheet_id = '1fika6X6aCOBhUV882FoS897QrXmtSkxOdCQvrEXYitI'
-
-stages = defaultdict(int)
-names = [['Саша', 'Женя', 'Крутов', 'Ангелина', 'Катя', 'Отмена']]
-chosen_name = {}
-chosen_sheet = {}
 
 
 @dp.message_handler()
