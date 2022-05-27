@@ -6,7 +6,7 @@ import random
 class Syllable:
     syllable: str
     length: int
-
+    breathing: bool = False
 
 @dataclasses.dataclass
 class Rythm:
@@ -21,25 +21,31 @@ class Rythm:
     def no_first_pause(self):
         return self.syllables[0].syllable != '--'
 
+    def count_breathing(self):
+        return sum(1 for syl in self.syllables if syl.breathing)
+
+    def enough_breathing(self):
+        return self.count_breathing() >= self.get_len()/6
+
     def is_proper_rythm(self):
         if not self.syllables:
             return False
-        return self.no_first_pause()
+        return self.no_first_pause() and self.enough_breathing()
 
     def __str__(self):
         return ' '.join([syl.syllable for syl in self.syllables])
 
 
 SYLLABLES: list[Syllable] = [
-    Syllable('Tou', 3),
+    Syllable('Tou', 3, True),
     Syllable('taka', 2),
     Syllable('taka', 2),
     Syllable('tiki', 2),
     Syllable('tiki', 2),
-    Syllable('Tawaka', 3),
-    Syllable('Tawaki', 3),
-    Syllable('Touka', 3),
-    Syllable('Touki', 3),
+    Syllable('Tawaka', 3, True),
+    Syllable('Tawaki', 3, True),
+    Syllable('Touka', 3, True),
+    Syllable('Touki', 3, True),
     Syllable('Tp', 1),
     Syllable('--', 1)
 ]
@@ -57,6 +63,3 @@ def gen_rythm(bits: int):
 
     return res
 
-
-if __name__ == '__main__':
-    print(gen_rythm(16))

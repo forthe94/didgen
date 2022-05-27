@@ -9,4 +9,13 @@ def test_first_pause():
 
     rythm.syllables[0].syllable = '--'
 
-    assert rythm.is_proper_rythm() is False
+    assert rythm.no_first_pause() is False
+
+
+def test_enough_breathing():
+    rythm = gen_rythm(9)
+    assert rythm.is_proper_rythm() is True
+
+    rythm.syllables[0].syllable = '--'
+
+    assert rythm.no_first_pause() is False
