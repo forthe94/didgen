@@ -53,7 +53,7 @@ SYLLABLES: list[Syllable] = [
 
 def gen_rythm(bits: int):
     res = Rythm([])
-    while res.get_len() != bits and res.is_proper_rythm:
+    while res.get_len() != bits and not res.is_proper_rythm():
 
         if res.get_len() > bits:
             res.syllables = []
