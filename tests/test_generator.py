@@ -5,7 +5,7 @@ from generator import gen_rythm
 
 def test_first_pause():
     rythm = gen_rythm(9)
-    assert rythm.is_proper_rythm() is True
+    assert rythm.is_proper_rythm(9) is True
 
     rythm.syllables[0].syllable = '--'
 
@@ -14,7 +14,7 @@ def test_first_pause():
 
 def test_enough_breathing():
     rythm = gen_rythm(9)
-    assert rythm.is_proper_rythm() is True
+    assert rythm.is_proper_rythm(9) is True
 
     rythm.syllables[0].syllable = '--'
 

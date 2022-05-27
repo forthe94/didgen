@@ -27,9 +27,13 @@ class Rythm:
     def enough_breathing(self):
         return self.count_breathing() >= self.get_len()/6
 
-    def is_proper_rythm(self):
+    def is_proper_rythm(self, bits: int):
         if not self.syllables:
             return False
+
+        if self.get_len() != bits:
+            return False
+
         return self.no_first_pause() and self.enough_breathing()
 
     def __str__(self):
@@ -53,13 +57,14 @@ SYLLABLES: list[Syllable] = [
 
 def gen_rythm(bits: int):
     res = Rythm([])
-    while res.get_len() != bits and not res.is_proper_rythm():
+    while not res.is_proper_rythm(bits):
 
         if res.get_len() > bits:
             res.syllables = []
 
         new_syllable = (random.choice(SYLLABLES))
         res.add_syllable(new_syllable)
+
 
     return res
 
