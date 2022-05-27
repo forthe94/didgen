@@ -52,7 +52,7 @@ SYLLABLES: list[Syllable] = [
     Syllable('Touka', 3, True),
     Syllable('Touki', 3, True),
     Syllable('Tp', 1),
-    Syllable('--', 1)
+    Syllable('-', 1)
 ]
 
 
