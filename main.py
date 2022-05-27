@@ -35,6 +35,9 @@ async def default_message(message: types.Message):
     await message.answer(rythm)
 
 
+async def on_startup(dp):
+    await bot.set_webhook('https://didgen-app.herokuapp.com/')
+
 if __name__ == '__main__':
     print('Bot started')
 
@@ -44,6 +47,7 @@ if __name__ == '__main__':
     executor.start_webhook(
         dispatcher=dp,
         skip_updates=True,
+        on_startup=on_startup,
         webhook_path='',
         port=PORT,
         host='0.0.0.0'
