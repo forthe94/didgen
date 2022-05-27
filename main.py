@@ -24,6 +24,9 @@ chosen_sheet = {}
 @dp.message_handler()
 async def default_message(message: types.Message):
     print(message)
+    rythm_len = int(message.text)
+    if rythm_len < 3:
+        return await message.answer('Слишком маленький размер')
     rythm = gen_rythm(int(message.text))
     await message.answer(rythm)
 
